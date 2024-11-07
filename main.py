@@ -1,4 +1,6 @@
-from flask import Flask
+from flask import Flask, render_template
+
+from model.task import *
 
 app = Flask(__name__)
 
@@ -9,6 +11,12 @@ def home_page():
 @app.route('/test')
 def test():
     return '<p>test</p>'
+
+@app.route('/overview')
+def overview():
+    task_model = Task()
+    all_tasks_from_db = task_model.show_tasks()
+    return render_template("overview.html", all_tasks_html = all_tasks_from_db)
 
 
 if __name__ == "__main__":
