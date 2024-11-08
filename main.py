@@ -18,6 +18,11 @@ def overview():
     all_tasks_from_db = task_model.show_tasks()
     return render_template("overview.html", all_tasks_html = all_tasks_from_db)
 
+@app.route('/task/<task_id>')
+def show_task(task_id):
+    task_model = Task()
+    single_task_from_db = task_model.show_task(task_id)
+    return render_template("task.html", single_task = single_task_from_db)
 
 if __name__ == "__main__":
     app.run(debug=True)
