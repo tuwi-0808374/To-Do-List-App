@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Create Task</h2>
+
+    <form method="POST">
+        <label for="task_name">Task Name:</label>
+        <input type="text" id="task_name" name="task_name" required>
+        <br>
+
+        <label for="task_description">Task Description:</label>
+        <textarea id="task_description" name="task_description" rows="4" cols="50"></textarea>
+        <br>
+
+        <label for="due_date">Due Date:</label>
+        <input type="date" id="due_date" name="due_date">
+        <br>
+
+        <label for="priority">Priority:</label>
+        <select id="priority" name="priority">
+            <option value="1">1 - High</option>
+            <option value="2">2 - Medium</option>
+            <option value="3">3 - Low</option>
+        </select>
+        <br>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="to do">To Do</option>
+            <option value="in progress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select>
+        <br>
+
+        <input type="submit" value="Create Task">
+    </form>
+</body>
+</html>

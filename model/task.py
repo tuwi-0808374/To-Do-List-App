@@ -18,6 +18,14 @@ class Task():
         print(self.show_result_debug(result))
         return result
 
+    def create_task(self, task_name, task_description, due_date, priority, status):
+        self.cursor.execute(
+            "INSERT into tasks (task_name,task_description,due_date,priority,status) VALUES (?,?,?,?,?)",
+            (task_name, task_description, due_date, priority, status))
+        self.con.commit()
+
+        return True
+
     def show_result_debug(self, result):
         for r in result:
             print(r)
