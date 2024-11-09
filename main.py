@@ -41,6 +41,30 @@ def create_task():
     else:
         return render_template('create_task.html')
 
+@app.route('/edit_task/<task_id>', methods=['GET', 'POST'])
+def edit_task(task_id):
+    task_model = Task()
+    if request.method == 'POST':
+        task_name = request.form.get('task_name')
+        task_description = request.form.get('task_description')
+        due_date = request.form.get('due_date')
+        priority = request.form.get('priority')
+        status = request.form.get('status')
+
+        updated_task_status = task_model.update_task(task_id, task_name, task_description, due_date, priority, status)
+        print(updated_task_status)
+        if updated_task_status:
+            return redirect('/overview')
+    else:
+        existing_task = task_model.show_task(task_id)
+        return render_template('edit_task.html', existing_task = existing_task)
+
+@app.route('/delete_task/<task_id>')
+def delete_task(task_id):
+    task_model = Task()
+    task_model.delete_task(task_id)
+
+    return redirect('/overview')
 
 if __name__ == "__main__":
     app.run(debug=True)
